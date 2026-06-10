@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		751C083B2EEC02000017C15D /* FlicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C083A2EEC02000017C15D /* FlicListViewModel.swift */; };
+		753475C42B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */; };
+		753475C62B76292B00D1ED5B /* FlicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C52B76292B00D1ED5B /* FlicListView.swift */; };
+		7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD01D012EEC02000017C15D /* FlicDetailView.swift */; };
+		753475C82B76292C00D1ED5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475C72B76292C00D1ED5B /* Assets.xcassets */; };
+		753475CB2B76292C00D1ED5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */; };
+		753475D32B762B3B00D1ED5B /* flic2lib in Frameworks */ = {isa = PBXBuildFile; productRef = 753475D22B762B3B00D1ED5B /* flic2lib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		751C083A2EEC02000017C15D /* FlicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicListViewModel.swift; sourceTree = "<group>"; };
+		753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flic-duo-features-sample-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flic2lib_ios_sampleApp.swift; sourceTree = "<group>"; };
+		753475C52B76292B00D1ED5B /* FlicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicListView.swift; sourceTree = "<group>"; };
+		7AD01D012EEC02000017C15D /* FlicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicDetailView.swift; sourceTree = "<group>"; };
+		753475C72B76292C00D1ED5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		753475D42B76307600D1ED5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		753475BD2B76292B00D1ED5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				753475D32B762B3B00D1ED5B /* flic2lib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		753475B72B76292B00D1ED5B = {
+			isa = PBXGroup;
+			children = (
+				753475C22B76292B00D1ED5B /* flic-duo-features-sample-ios */,
+				753475C12B76292B00D1ED5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		753475C12B76292B00D1ED5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		753475C22B76292B00D1ED5B /* flic-duo-features-sample-ios */ = {
+			isa = PBXGroup;
+			children = (
+				753475D42B76307600D1ED5B /* Info.plist */,
+				753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */,
+				753475C52B76292B00D1ED5B /* FlicListView.swift */,
+				7AD01D012EEC02000017C15D /* FlicDetailView.swift */,
+				751C083A2EEC02000017C15D /* FlicListViewModel.swift */,
+				753475C72B76292C00D1ED5B /* Assets.xcassets */,
+				753475C92B76292C00D1ED5B /* Preview Content */,
+			);
+			path = "flic-duo-features-sample-ios";
+			sourceTree = "<group>";
+		};
+		753475C92B76292C00D1ED5B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		753475BF2B76292B00D1ED5B /* flic-duo-features-sample-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 753475CE2B76292C00D1ED5B /* Build configuration list for PBXNativeTarget "flic-duo-features-sample-ios" */;
+			buildPhases = (
+				753475BC2B76292B00D1ED5B /* Sources */,
+				753475BD2B76292B00D1ED5B /* Frameworks */,
+				753475BE2B76292B00D1ED5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "flic-duo-features-sample-ios";
+			packageProductDependencies = (
+				753475D22B762B3B00D1ED5B /* flic2lib */,
+			);
+			productName = "flic2lib-ios-sample";
+			productReference = 753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		753475B82B76292B00D1ED5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					753475BF2B76292B00D1ED5B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 753475BB2B76292B00D1ED5B /* Build configuration list for PBXProject "flic-duo-features-sample-ios" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 753475B72B76292B00D1ED5B;
+			packageReferences = (
+				753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */,
+			);
+			productRefGroup = 753475C12B76292B00D1ED5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				753475BF2B76292B00D1ED5B /* flic-duo-features-sample-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		753475BE2B76292B00D1ED5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				753475CB2B76292C00D1ED5B /* Preview Assets.xcassets in Resources */,
+				753475C82B76292C00D1ED5B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		753475BC2B76292B00D1ED5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751C083B2EEC02000017C15D /* FlicListViewModel.swift in Sources */,
+				753475C62B76292B00D1ED5B /* FlicListView.swift in Sources */,
+				7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */,
+				753475C42B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		753475CC2B76292C00D1ED5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = J676M46HZA;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		753475CD2B76292C00D1ED5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J676M46HZA;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		753475CF2B76292C00D1ED5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"flic-duo-features-sample-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = J676M46HZA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "flic-duo-features-sample-ios/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect Flic buttons";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shortcutlabs.flic-duo-features-sample-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		753475D02B76292C00D1ED5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"flic-duo-features-sample-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = J676M46HZA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "flic-duo-features-sample-ios/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect Flic buttons";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shortcutlabs.flic-duo-features-sample-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		753475BB2B76292B00D1ED5B /* Build configuration list for PBXProject "flic-duo-features-sample-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				753475CC2B76292C00D1ED5B /* Debug */,
+				753475CD2B76292C00D1ED5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		753475CE2B76292C00D1ED5B /* Build configuration list for PBXNativeTarget "flic-duo-features-sample-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				753475CF2B76292C00D1ED5B /* Debug */,
+				753475D02B76292C00D1ED5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/50ButtonsEach/flic2lib-ios";
+			requirement = {
+				branch = "feature/fall-detection";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		753475D22B762B3B00D1ED5B /* flic2lib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */;
+			productName = flic2lib;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 753475B82B76292B00D1ED5B /* Project object */;
+}
