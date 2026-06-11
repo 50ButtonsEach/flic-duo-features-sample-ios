@@ -10,10 +10,11 @@
 		751C083B2EEC02000017C15D /* FlicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C083A2EEC02000017C15D /* FlicListViewModel.swift */; };
 		753475C42B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */; };
 		753475C62B76292B00D1ED5B /* FlicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C52B76292B00D1ED5B /* FlicListView.swift */; };
-		7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD01D012EEC02000017C15D /* FlicDetailView.swift */; };
 		753475C82B76292C00D1ED5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475C72B76292C00D1ED5B /* Assets.xcassets */; };
 		753475CB2B76292C00D1ED5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */; };
 		753475D32B762B3B00D1ED5B /* flic2lib in Frameworks */ = {isa = PBXBuildFile; productRef = 753475D22B762B3B00D1ED5B /* flic2lib */; };
+		75F0A7962FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F0A7952FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png */; };
+		7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD01D012EEC02000017C15D /* FlicDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,10 +22,11 @@
 		753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flic-duo-features-sample-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flic2lib_ios_sampleApp.swift; sourceTree = "<group>"; };
 		753475C52B76292B00D1ED5B /* FlicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicListView.swift; sourceTree = "<group>"; };
-		7AD01D012EEC02000017C15D /* FlicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicDetailView.swift; sourceTree = "<group>"; };
 		753475C72B76292C00D1ED5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		753475D42B76307600D1ED5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		75F0A7952FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flic-duo-features-sample-ios-icon.png"; sourceTree = "<group>"; };
+		7AD01D012EEC02000017C15D /* FlicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		753475C22B76292B00D1ED5B /* flic-duo-features-sample-ios */ = {
 			isa = PBXGroup;
 			children = (
+				75F0A7952FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png */,
 				753475D42B76307600D1ED5B /* Info.plist */,
 				753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */,
 				753475C52B76292B00D1ED5B /* FlicListView.swift */,
@@ -141,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F0A7962FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png in Resources */,
 				753475CB2B76292C00D1ED5B /* Preview Assets.xcassets in Resources */,
 				753475C82B76292C00D1ED5B /* Assets.xcassets in Resources */,
 			);
@@ -298,6 +302,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "flic-duo-features-sample-ios/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flic Labs";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect Flic buttons";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,6 +335,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "flic-duo-features-sample-ios/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flic Labs";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect Flic buttons";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
