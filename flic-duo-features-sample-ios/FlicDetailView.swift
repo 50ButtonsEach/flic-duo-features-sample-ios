@@ -365,13 +365,11 @@ struct FallDetectionSettingsView: View {
 				}
 
 				Section("Accelerometer") {
-					intStepper(
-						"Full-scale selection",
-						value: uint8Binding(\.fullScaleSelection),
-						unit: "",
-						range: 0...3,
-						step: 1
-					)
+					Picker("Full-scale selection", selection: $settings.fullScaleSelection) {
+						ForEach(FallDetectionFullScaleOption.all) { option in
+							Text(option.title).tag(option.selection)
+						}
+					}
 				}
 			}
 			.navigationTitle("Fall Settings")
@@ -395,13 +393,6 @@ struct FallDetectionSettingsView: View {
 		Binding(
 			get: { Int(settings[keyPath: keyPath]) },
 			set: { settings[keyPath: keyPath] = UInt16(clamping: $0) }
-		)
-	}
-
-	private func uint8Binding(_ keyPath: WritableKeyPath<FallDetectionSettings, UInt8>) -> Binding<Int> {
-		Binding(
-			get: { Int(settings[keyPath: keyPath]) },
-			set: { settings[keyPath: keyPath] = UInt8(clamping: $0) }
 		)
 	}
 
@@ -440,6 +431,19 @@ struct FallDetectionSettingsView: View {
 
 		return "\(value) \(unit)"
 	}
+}
+
+private struct FallDetectionFullScaleOption: Identifiable {
+	let id: String
+	let title: String
+	let selection: FLICButtonAccelerometerFullScaleSelection
+
+	static let all: [FallDetectionFullScaleOption] = [
+		FallDetectionFullScaleOption(id: "twoG", title: "2 g", selection: .twoG),
+		FallDetectionFullScaleOption(id: "fourG", title: "4 g", selection: .fourG),
+		FallDetectionFullScaleOption(id: "eightG", title: "8 g", selection: .eightG),
+		FallDetectionFullScaleOption(id: "sixteenG", title: "16 g", selection: .sixteenG)
+	]
 }
 
 struct FallEventRow: View {

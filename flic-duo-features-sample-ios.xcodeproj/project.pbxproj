@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7519EE5E2FDB137400FC351C /* flic2lib in Frameworks */ = {isa = PBXBuildFile; productRef = 7519EE5D2FDB137400FC351C /* flic2lib */; };
 		751C083B2EEC02000017C15D /* FlicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C083A2EEC02000017C15D /* FlicListViewModel.swift */; };
 		753475C42B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */; };
 		753475C62B76292B00D1ED5B /* FlicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C52B76292B00D1ED5B /* FlicListView.swift */; };
 		753475C82B76292C00D1ED5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475C72B76292C00D1ED5B /* Assets.xcassets */; };
 		753475CB2B76292C00D1ED5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 753475CA2B76292C00D1ED5B /* Preview Assets.xcassets */; };
-		753475D32B762B3B00D1ED5B /* flic2lib in Frameworks */ = {isa = PBXBuildFile; productRef = 753475D22B762B3B00D1ED5B /* flic2lib */; };
 		75F0A7962FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F0A7952FDADF3200E64BDA /* flic-duo-features-sample-ios-icon.png */; };
 		7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD01D012EEC02000017C15D /* FlicDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -34,17 +34,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				753475D32B762B3B00D1ED5B /* flic2lib in Frameworks */,
+				7519EE5E2FDB137400FC351C /* flic2lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7519EE5C2FDB137400FC351C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		753475B72B76292B00D1ED5B = {
 			isa = PBXGroup;
 			children = (
 				753475C22B76292B00D1ED5B /* flic-duo-features-sample-ios */,
+				7519EE5C2FDB137400FC351C /* Frameworks */,
 				753475C12B76292B00D1ED5B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,7 +105,7 @@
 			);
 			name = "flic-duo-features-sample-ios";
 			packageProductDependencies = (
-				753475D22B762B3B00D1ED5B /* flic2lib */,
+				7519EE5D2FDB137400FC351C /* flic2lib */,
 			);
 			productName = "flic2lib-ios-sample";
 			productReference = 753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */;
@@ -128,7 +136,7 @@
 			);
 			mainGroup = 753475B72B76292B00D1ED5B;
 			packageReferences = (
-				753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */,
+				75F0A7972FDB12CC00E64BDA /* XCRemoteSwiftPackageReference "flic2lib-ios" */,
 			);
 			productRefGroup = 753475C12B76292B00D1ED5B /* Products */;
 			projectDirPath = "";
@@ -380,9 +388,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */ = {
+		75F0A7972FDB12CC00E64BDA /* XCRemoteSwiftPackageReference "flic2lib-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/50ButtonsEach/flic2lib-ios";
+			repositoryURL = "git@github.com:50ButtonsEach/flic2lib-ios.git";
 			requirement = {
 				branch = "feature/fall-detection";
 				kind = branch;
@@ -391,9 +399,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		753475D22B762B3B00D1ED5B /* flic2lib */ = {
+		7519EE5D2FDB137400FC351C /* flic2lib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 753475D12B762B3B00D1ED5B /* XCRemoteSwiftPackageReference "flic2lib-ios" */;
+			package = 75F0A7972FDB12CC00E64BDA /* XCRemoteSwiftPackageReference "flic2lib-ios" */;
 			productName = flic2lib;
 		};
 /* End XCSwiftPackageProductDependency section */

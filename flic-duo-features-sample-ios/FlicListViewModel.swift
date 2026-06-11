@@ -24,7 +24,7 @@ struct FallDetectionSettings: Equatable {
 	var highGThresholdMg: UInt16 = 3500
 	var highGTimeWindowMs: UInt16 = 50
 	var postEventRecordDurationMs: UInt16 = 2000
-	var fullScaleSelection: UInt8 = 1
+	var fullScaleSelection: FLICButtonAccelerometerFullScaleSelection = .fourG
 
 	static let `default` = FallDetectionSettings()
 
@@ -134,7 +134,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 	}
 
 	var connectionActionSystemImage: String {
-		flicButton.state == .disconnected ? "link.badge.plus" : "link.badge.minus"
+		flicButton.state == .disconnected ? "link" : "link.slash"
 	}
 
 	var isConnectionActionDisabled: Bool {
@@ -194,7 +194,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 			mode: 1,
 			outputDataRate: 5,
 			bandwidthFilter: 0,
-			fullScaleSelection: 1,
+			fullScaleSelection: .fourG,
 			filterDatatypeSelection: 0,
 			lowNoise: 0,
 			highPassRefMode: 0,
@@ -206,7 +206,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 			DispatchQueue.main.async {
 				guard let self = self else { return }
 				self.isAccelerometerBusy = false
-				if result == .OK {
+				if result == .success {
 					self.isAccelerometerStreaming = true
 				} else {
 					self.accelerometerError = FlicButtonModel.description(for: result)
@@ -232,7 +232,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 			DispatchQueue.main.async {
 				guard let self = self else { return }
 				self.isFallDetectionBusy = false
-				if result == .OK {
+				if result == .success {
 					self.isFallDetectionEnabled = true
 				} else {
 					self.isFallDetectionEnabled = false
@@ -368,7 +368,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 
 	private static func description(for result: FLICButtonEnableAccelerometerStreamingResult) -> String {
 		switch result {
-		case .OK: return "OK"
+		case .success: return "OK"
 		case .invalidConfig: return "Invalid accelerometer configuration."
 		case .busy: return "The Flic is busy. Please try again."
 		case .notReady: return "The Flic is not ready yet. Wait for it to connect."
@@ -380,7 +380,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 
 	private static func description(for result: FLICButtonEnableFallDetectionResult) -> String {
 		switch result {
-		case .OK: return "OK"
+		case .success: return "OK"
 		case .invalidConfig: return "Invalid fall detection configuration."
 		case .busy: return "The Flic is busy. Please try again."
 		case .notReady: return "The Flic is not ready yet. Wait for it to connect."
