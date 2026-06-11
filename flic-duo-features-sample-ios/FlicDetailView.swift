@@ -75,19 +75,24 @@ enum FlicBuzzerPatterns {
 }
 
 /// Detail screen for a single Flic where you can try out the device features.
-/// Currently exposes accelerometer streaming, with buzzer and fall detection to follow.
 struct FlicDetailView: View {
 
 	@ObservedObject var button: FlicButtonModel
 	@State private var showBuzzerPicker = false
+	@State private var showFallDetectionSettings = false
 
 	var body: some View {
 		List {
+			connectionSection
 			accelerometerSection
+			fallDetectionSection
 			buzzerSection
 		}
 		.navigationTitle(button.serialNumber)
 		.navigationBarTitleDisplayMode(.inline)
+		.sheet(isPresented: $showFallDetectionSettings) {
+			FallDetectionSettingsView(settings: $button.fallDetectionSettings)
+		}
 		.onDisappear {
 			// Stop streaming when leaving the screen so the Flic doesn't keep sending data.
 			if button.isAccelerometerStreaming {
@@ -98,6 +103,73 @@ struct FlicDetailView: View {
 
 	private var isConnected: Bool {
 		button.state == .connected
+	}
+
+	private var connectionSection: some View {
+		Section {
+			HStack(spacing: 12) {
+				Image(systemName: "circle.fill")
+					.font(.caption)
+					.foregroundColor(connectionStatusColor)
+
+				Text(connectionStatusText)
+					.font(.body)
+
+				buttonDownIndicators
+
+				Spacer()
+
+				Button {
+					button.toggleConnection()
+				} label: {
+					Image(systemName: button.connectionActionSystemImage)
+						.imageScale(.large)
+						.frame(width: 32, height: 32)
+				}
+				.buttonStyle(.borderless)
+				.disabled(button.isConnectionActionDisabled)
+				.accessibilityLabel(button.connectionActionTitle)
+			}
+		}
+	}
+
+	private var buttonDownIndicators: some View {
+		HStack(spacing: 4) {
+			if button.downButtons.contains(0) {
+				Image(systemName: "circle.fill")
+			} else {
+				Image(systemName: "circle")
+			}
+
+			if button.isDuo {
+				if button.downButtons.contains(1) {
+					Image(systemName: "circle.fill")
+				} else {
+					Image(systemName: "circle")
+				}
+			}
+		}
+		.font(.caption)
+		.foregroundColor(.secondary)
+	}
+
+	private var connectionStatusColor: Color {
+		button.state == .connected ? .green : .yellow
+	}
+
+	private var connectionStatusText: String {
+		switch button.state {
+		case .connected:
+			return "Connected"
+		case .connecting:
+			return "Connecting"
+		case .disconnecting:
+			return "Disconnecting"
+		case .disconnected:
+			return "Disconnected"
+		@unknown default:
+			return "Unknown"
+		}
 	}
 
 	private var buzzerSection: some View {
@@ -124,6 +196,59 @@ struct FlicDetailView: View {
 			Text("Buzzer")
 		} footer: {
 			Text("Plays a predefined melody on the Flic Duo's buzzer.")
+		}
+	}
+
+	private var fallDetectionSection: some View {
+		Section {
+			HStack(spacing: 12) {
+				Toggle("Enable fall detection", isOn: Binding(
+					get: { button.isFallDetectionEnabled },
+					set: { enabled in
+						if enabled {
+							button.enableFallDetection()
+						} else {
+							button.disableFallDetection()
+						}
+					}
+				))
+				.disabled(button.isFallDetectionBusy || !isConnected)
+
+				Button {
+					showFallDetectionSettings = true
+				} label: {
+					Image(systemName: "gearshape")
+						.imageScale(.large)
+				}
+				.buttonStyle(.borderless)
+				.accessibilityLabel("Fall detection settings")
+			}
+
+			if !isConnected {
+				Label("Flic must be connected to enable fall detection.", systemImage: "exclamationmark.triangle")
+					.font(.caption)
+					.foregroundColor(.orange)
+			}
+
+			if let error = button.fallDetectionError {
+				Label(error, systemImage: "xmark.octagon")
+					.font(.caption)
+					.foregroundColor(.red)
+			}
+
+			if button.fallEvents.isEmpty {
+				Text("No fall events")
+					.font(.caption)
+					.foregroundColor(.secondary)
+			} else {
+				ForEach(button.fallEvents) { event in
+					FallEventRow(event: event)
+				}
+			}
+		} header: {
+			Text("Fall Detection")
+		} footer: {
+			Text("Events and settings are kept in memory for the current app session.")
 		}
 	}
 
@@ -177,6 +302,355 @@ struct FlicDetailView: View {
 				.frame(height: 220)
 				.padding(.vertical, 8)
 		}
+	}
+}
+
+struct FallDetectionSettingsView: View {
+
+	@Binding var settings: FallDetectionSettings
+	@Environment(\.dismiss) private var dismiss
+
+	var body: some View {
+		NavigationStack {
+			Form {
+				Section("Low-G") {
+					uint16Stepper(
+						"Threshold",
+						value: uint16Binding(\.lowGThresholdMg),
+						unit: "mg",
+						range: 100...4000,
+						step: 50
+					)
+					uint16Stepper(
+						"Duration",
+						value: uint16Binding(\.lowGDurationMs),
+						unit: "ms",
+						range: 10...2000,
+						step: 10
+					)
+				}
+
+				Section("High-G") {
+					uint16Stepper(
+						"Timeout",
+						value: uint16Binding(\.highGTimeoutMs),
+						unit: "ms",
+						range: 100...5000,
+						step: 50
+					)
+					uint16Stepper(
+						"Threshold",
+						value: uint16Binding(\.highGThresholdMg),
+						unit: "mg",
+						range: 500...16000,
+						step: 100
+					)
+					uint16Stepper(
+						"Time window",
+						value: uint16Binding(\.highGTimeWindowMs),
+						unit: "ms",
+						range: 10...1000,
+						step: 10
+					)
+				}
+
+				Section("Post Event") {
+					uint16Stepper(
+						"Record duration",
+						value: uint16Binding(\.postEventRecordDurationMs),
+						unit: "ms",
+						range: 1000...30000,
+						step: 1000
+					)
+				}
+
+				Section("Accelerometer") {
+					intStepper(
+						"Full-scale selection",
+						value: uint8Binding(\.fullScaleSelection),
+						unit: "",
+						range: 0...3,
+						step: 1
+					)
+				}
+			}
+			.navigationTitle("Fall Settings")
+			.navigationBarTitleDisplayMode(.inline)
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
+					Button("Done") {
+						dismiss()
+					}
+				}
+				ToolbarItem(placement: .primaryAction) {
+					Button("Reset") {
+						settings = .default
+					}
+				}
+			}
+		}
+	}
+
+	private func uint16Binding(_ keyPath: WritableKeyPath<FallDetectionSettings, UInt16>) -> Binding<Int> {
+		Binding(
+			get: { Int(settings[keyPath: keyPath]) },
+			set: { settings[keyPath: keyPath] = UInt16(clamping: $0) }
+		)
+	}
+
+	private func uint8Binding(_ keyPath: WritableKeyPath<FallDetectionSettings, UInt8>) -> Binding<Int> {
+		Binding(
+			get: { Int(settings[keyPath: keyPath]) },
+			set: { settings[keyPath: keyPath] = UInt8(clamping: $0) }
+		)
+	}
+
+	private func uint16Stepper(
+		_ title: String,
+		value: Binding<Int>,
+		unit: String,
+		range: ClosedRange<Int>,
+		step: Int
+	) -> some View {
+		intStepper(title, value: value, unit: unit, range: range, step: step)
+	}
+
+	private func intStepper(
+		_ title: String,
+		value: Binding<Int>,
+		unit: String,
+		range: ClosedRange<Int>,
+		step: Int
+	) -> some View {
+		Stepper(value: value, in: range, step: step) {
+			HStack {
+				Text(title)
+				Spacer()
+				Text(valueText(value.wrappedValue, unit: unit))
+					.foregroundColor(.secondary)
+					.monospacedDigit()
+			}
+		}
+	}
+
+	private func valueText(_ value: Int, unit: String) -> String {
+		if unit.isEmpty {
+			return "\(value)"
+		}
+
+		return "\(value) \(unit)"
+	}
+}
+
+struct FallEventRow: View {
+
+	let event: FallEvent
+
+	var body: some View {
+		VStack(alignment: .leading, spacing: 8) {
+			HStack(alignment: .firstTextBaseline) {
+				Text("Fall")
+					.font(.headline)
+
+				Spacer()
+
+				Text(event.status.title)
+					.font(.caption)
+					.fontWeight(.semibold)
+					.foregroundColor(statusColor)
+			}
+
+			Text(event.triggeredAt, format: .dateTime.hour().minute().second())
+				.font(.caption)
+				.foregroundColor(.secondary)
+
+			FallEventGraph(event: event)
+
+			if let sampleSummary = event.sampleSummary {
+				Text(sampleSummary)
+					.font(.caption2)
+					.foregroundColor(.secondary)
+					.monospacedDigit()
+			}
+		}
+		.padding(.vertical, 6)
+	}
+
+	private var statusColor: Color {
+		switch event.status {
+		case .triggered, .collectingPostFallData:
+			return .orange
+		case .completed:
+			return .green
+		case .cancelledByUser:
+			return .red
+		}
+	}
+}
+
+struct FallEventGraph: View {
+
+	let event: FallEvent
+
+	var body: some View {
+		ZStack(alignment: .topTrailing) {
+			if event.graphSeriesPoints.isEmpty {
+				RoundedRectangle(cornerRadius: 8)
+					.fill(Color.secondary.opacity(0.08))
+					.frame(height: 160)
+			} else {
+				FallDetectionChart(event: event)
+					.frame(height: 180)
+			}
+
+			if event.isAwaitingCompleteCurve {
+				Text("Pending...")
+					.font(.caption)
+					.fontWeight(.semibold)
+					.foregroundColor(.secondary)
+					.padding(8)
+			}
+		}
+		.padding(.top, 4)
+	}
+}
+
+struct FallDetectionChart: View {
+
+	let event: FallEvent
+
+	var body: some View {
+		Chart {
+			ForEach(event.graphSeriesPoints) { point in
+				LineMark(
+					x: .value("Seconds from impact", point.timeSeconds),
+					y: .value("Acceleration", point.value)
+				)
+				.foregroundStyle(by: .value("Channel", point.series.title))
+				.interpolationMethod(.catmullRom)
+			}
+
+			RuleMark(x: .value("Impact", 0))
+				.foregroundStyle(Color.secondary)
+				.lineStyle(StrokeStyle(lineWidth: 1, dash: [4, 4]))
+		}
+		.chartForegroundStyleScale(
+			domain: FallGraphSeries.allCases.map(\.title),
+			range: [Color.red, Color.green, Color.blue, Color.secondary]
+		)
+		.chartLegend(position: .top)
+		.chartXAxisLabel("Seconds from impact")
+		.chartYAxisLabel("Acceleration")
+	}
+}
+
+private enum FallGraphSeries: CaseIterable {
+	case x
+	case y
+	case z
+	case magnitude
+
+	var title: String {
+		switch self {
+		case .x: return "X"
+		case .y: return "Y"
+		case .z: return "Z"
+		case .magnitude: return "Magnitude"
+		}
+	}
+}
+
+private struct FallGraphPoint: Identifiable {
+	let id: String
+	let timeSeconds: Double
+	let value: Double
+	let series: FallGraphSeries
+}
+
+private extension FallEvent {
+
+	var graphSeriesPoints: [FallGraphPoint] {
+		preFallGraphPoints + postFallGraphPoints
+	}
+
+	var sampleSummary: String? {
+		var parts: [String] = []
+
+		if let preFallSampleRate {
+			parts.append(sampleSummaryPart(
+				title: "Pre",
+				count: preFallSamples.count,
+				expectedCount: preFallExpectedSampleCount,
+				sampleRate: preFallSampleRate
+			))
+		}
+
+		if let postFallSampleRate {
+			parts.append(sampleSummaryPart(
+				title: "Post",
+				count: postFallSamples.count,
+				expectedCount: postFallExpectedSampleCount,
+				sampleRate: postFallSampleRate
+			))
+		}
+
+		if parts.isEmpty {
+			return nil
+		}
+
+		return parts.joined(separator: " | ")
+	}
+
+	private var preFallGraphPoints: [FallGraphPoint] {
+		guard let preFallSampleRate, preFallSampleRate > 0 else { return [] }
+
+		let interval = 1.0 / Double(preFallSampleRate)
+		let sampleCount = preFallSamples.count
+
+		return preFallSamples.enumerated().flatMap { index, sample in
+			graphPoints(
+				idPrefix: "pre-\(index)",
+				timeSeconds: -Double(sampleCount - 1 - index) * interval,
+				sample: sample
+			)
+		}
+	}
+
+	private var postFallGraphPoints: [FallGraphPoint] {
+		guard let postFallSampleRate, postFallSampleRate > 0 else { return [] }
+
+		let interval = 1.0 / Double(postFallSampleRate)
+
+		return postFallSamples.enumerated().flatMap { index, sample in
+			graphPoints(
+				idPrefix: "post-\(index)",
+				timeSeconds: Double(index) * interval,
+				sample: sample
+			)
+		}
+	}
+
+	private func graphPoints(
+		idPrefix: String,
+		timeSeconds: Double,
+		sample: FallDetectionSample
+	) -> [FallGraphPoint] {
+		[
+			FallGraphPoint(id: "\(idPrefix)-x", timeSeconds: timeSeconds, value: sample.x, series: .x),
+			FallGraphPoint(id: "\(idPrefix)-y", timeSeconds: timeSeconds, value: sample.y, series: .y),
+			FallGraphPoint(id: "\(idPrefix)-z", timeSeconds: timeSeconds, value: sample.z, series: .z),
+			FallGraphPoint(id: "\(idPrefix)-magnitude", timeSeconds: timeSeconds, value: sample.magnitude, series: .magnitude)
+		]
+	}
+
+	private func sampleSummaryPart(
+		title: String,
+		count: Int,
+		expectedCount: UInt16?,
+		sampleRate: UInt16
+	) -> String {
+		let expectedText = expectedCount.map { "/\($0)" } ?? ""
+		return "\(title) \(count)\(expectedText) @ \(sampleRate) Hz"
 	}
 }
 
