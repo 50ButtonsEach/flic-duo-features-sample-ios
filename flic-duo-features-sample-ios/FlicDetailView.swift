@@ -11,13 +11,15 @@ import flic2lib
 
 /// Predefined buzzer melodies that can be played on a Flic Duo.
 enum FlicBuzzerPatterns {
-	static let fallAlert: [(hz: Int32, duration: Float)] = {
-		let toneHz: Int32 = 1000
-		let blipDuration: Float = 0.12
-		let interval: Float = 0.5
-		let blipCount = Int(7.0 / Double(interval))
+	typealias Note = (hz: Float, duration: UInt16)
+
+	static let fallAlert: [Note] = {    
+		let toneHz: Float = 1_000
+		let blipDuration: UInt16 = 120
+		let interval: UInt16 = 500
+		let blipCount = 7_000 / Int(interval)
 		let silenceDuration = interval - blipDuration
-		var notes: [(hz: Int32, duration: Float)] = []
+		var notes: [Note] = []
 
 		notes.reserveCapacity((blipCount * 2) + 1)
 		for _ in 0..<blipCount {
@@ -26,42 +28,42 @@ enum FlicBuzzerPatterns {
 				notes.append((hz: 0, duration: silenceDuration))
 			}
 		}
-		notes.append((hz: toneHz, duration: 3.0))
+		notes.append((hz: toneHz, duration: 3_000))
 
 		return notes
 	}()
 
-	static let bigButtonAlarm: [(hz: Int32, duration: Float)] = [
-		(hz: 4000, duration: 10.0)
+	static let bigButtonAlarm: [Note] = [
+		(hz: 4_000, duration: 10_000)
 	]
 
-	static let confirm: [(hz: Int32, duration: Float)] = [
-		(hz: 1760, duration: 0.06),
-		(hz: 0, duration: 0.01),
-		(hz: 2217, duration: 0.06),
-		(hz: 0, duration: 0.01),
-		(hz: 2637, duration: 0.16)
+	static let confirm: [Note] = [
+		(hz: 1_760, duration: 60),
+		(hz: 0, duration: 10),
+		(hz: 2_217, duration: 60),
+		(hz: 0, duration: 10),
+		(hz: 2_637, duration: 160)
 	]
 
-	static let awaitingStillnessBlip: [(hz: Int32, duration: Float)] = [
-		(hz: 4000, duration: 0.03),
-		(hz: 0, duration: 0.02),
-		(hz: 4000, duration: 0.03),
-		(hz: 0, duration: 0.02),
-		(hz: 4000, duration: 0.03)
+	static let awaitingStillnessBlip: [Note] = [
+		(hz: 4_000, duration: 30),
+		(hz: 0, duration: 20),
+		(hz: 4_000, duration: 30),
+		(hz: 0, duration: 20),
+		(hz: 4_000, duration: 30)
 	]
 
-	static let abort: [(hz: Int32, duration: Float)] = [
-		(hz: 2200, duration: 0.05),
-		(hz: 0, duration: 0.015),
-		(hz: 1500, duration: 0.08)
+	static let abort: [Note] = [
+		(hz: 2_200, duration: 50),
+		(hz: 0, duration: 15),
+		(hz: 1_500, duration: 80)
 	]
 
 	/// A named, selectable buzzer pattern for presentation in the UI.
 	struct NamedPattern: Identifiable {
 		let id = UUID()
 		let name: String
-		let notes: [(hz: Int32, duration: Float)]
+		let notes: [Note]
 	}
 
 	/// All patterns offered in the "Play Buzzer Sound" picker, in display order.

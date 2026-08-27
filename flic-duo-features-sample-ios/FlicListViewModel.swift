@@ -227,9 +227,9 @@ class FlicButtonModel: ObservableObject, Identifiable {
 	// MARK: Buzzer
 
 	/// Plays a series of notes on the Flic Duo's buzzer.
-	func playBuzzer(_ notes: [(hz: Int32, duration: Float)]) {
+	func playBuzzer(_ notes: [FlicBuzzerPatterns.Note]) {
 		let buzzerNotes = notes.map {
-			FLICButtonBuzzerNote(hz: Float($0.hz), duration: UInt16($0.duration * 1_000))
+			FLICButtonBuzzerNote(hz: $0.hz, duration: $0.duration)
 		}
 		flicButton.playBuzzerSound(buzzerNotes)
 	}
