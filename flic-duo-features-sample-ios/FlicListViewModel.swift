@@ -117,6 +117,11 @@ class FlicButtonModel: ObservableObject, Identifiable {
 	@Published var fallDetectionError: String? = nil
 	@Published var fallEvents: [FallEvent] = []
 
+	/// True while either mutually exclusive motion feature is being enabled.
+	var isMotionFeatureBusy: Bool {
+		isAccelerometerBusy || isFallDetectionBusy
+	}
+
 	private var fallEventSequence = 0
 	private var activeFallEventID: UUID?
 	fileprivate static let smallButtonNumber: UInt8 = 1
@@ -189,6 +194,10 @@ class FlicButtonModel: ObservableObject, Identifiable {
 		isAccelerometerBusy = true
 		accelerometerError = nil
 
+		if isFallDetectionEnabled {
+			disableFallDetection()
+		}
+
 		let config = FLICButtonAccelerometerStreamingConfig(
 			lowPowerMode: 0,
 			mode: 1,
@@ -229,6 +238,10 @@ class FlicButtonModel: ObservableObject, Identifiable {
 	func enableFallDetection() {
 		isFallDetectionBusy = true
 		fallDetectionError = nil
+
+		if isAccelerometerStreaming {
+			disableAccelerometerStreaming()
+		}
 
 		flicButton.enableFallDetection(with: fallDetectionSettings.makeConfig(), alwaysReconnect: true) { [weak self] result in
 			DispatchQueue.main.async {

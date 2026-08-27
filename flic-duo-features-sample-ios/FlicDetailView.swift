@@ -212,7 +212,7 @@ struct FlicDetailView: View {
 						}
 					}
 				))
-				.disabled(button.isFallDetectionBusy || !isConnected)
+				.disabled(button.isMotionFeatureBusy || !isConnected)
 
 				Button {
 					showFallDetectionSettings = true
@@ -221,6 +221,7 @@ struct FlicDetailView: View {
 						.imageScale(.large)
 				}
 				.buttonStyle(.borderless)
+				.disabled(button.isFallDetectionEnabled || button.isFallDetectionBusy)
 				.accessibilityLabel("Fall detection settings")
 			}
 
@@ -264,7 +265,7 @@ struct FlicDetailView: View {
 					}
 				}
 			))
-			.disabled(button.isAccelerometerBusy || !isConnected)
+			.disabled(button.isMotionFeatureBusy || !isConnected)
 
 			if !isConnected {
 				Label("Flic must be connected to stream.", systemImage: "exclamationmark.triangle")
