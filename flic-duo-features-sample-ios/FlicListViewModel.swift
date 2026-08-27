@@ -189,7 +189,7 @@ class FlicButtonModel: ObservableObject, Identifiable {
 		isAccelerometerBusy = true
 		accelerometerError = nil
 
-		let config = FLICButtonAccelerometerConfig(
+		let config = FLICButtonAccelerometerStreamingConfig(
 			lowPowerMode: 0,
 			mode: 1,
 			outputDataRate: 5,
@@ -219,7 +219,9 @@ class FlicButtonModel: ObservableObject, Identifiable {
 
 	/// Plays a series of notes on the Flic Duo's buzzer.
 	func playBuzzer(_ notes: [(hz: Int32, duration: Float)]) {
-		let buzzerNotes = notes.map { FLICButtonBuzzerNote(hz: $0.hz, duration: $0.duration) }
+		let buzzerNotes = notes.map {
+			FLICButtonBuzzerNote(hz: Float($0.hz), duration: UInt16($0.duration * 1_000))
+		}
 		flicButton.playBuzzerSound(buzzerNotes)
 	}
 
