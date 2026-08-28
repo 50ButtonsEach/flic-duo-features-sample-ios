@@ -1,0 +1,15 @@
+{
+  "originHash" : "0d7cdb961cba8becff9479a8dbe318175138449b7ce7d7f5b301b6ee53bdf546",
+  "pins" : [
+    {
+      "identity" : "flic2lib-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/50ButtonsEach/flic2lib-ios.git",
+      "state" : {
+        "branch" : "feature/fall-detection",
+        "revision" : "a30444d4e2d3f8d852ee1c2e9b94c256c135de9f"
+      }
+    }
+  ],
+  "version" : 3
+}

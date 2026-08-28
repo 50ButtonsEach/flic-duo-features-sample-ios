@@ -1,4 +1,4 @@
-Copyright (c) 2020 Shortcut Labs AB
+Copyright (c) 2026 Shortcut Labs AB
 
 The software is supplied "as is", without warranty of any kind,
 express or implied, including, without limitation, the warranties

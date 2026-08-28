@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A11C00052FD0000100F1C002 /* flic2lib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11C00042FD0000100F1C002 /* flic2lib.framework */; };
-		A11C00062FD0000100F1C002 /* flic2lib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A11C00042FD0000100F1C002 /* flic2lib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A11C00102FD0000100F1C002 /* flic2lib in Frameworks */ = {isa = PBXBuildFile; productRef = A11C000F2FD0000100F1C002 /* flic2lib */; };
 		751C083B2EEC02000017C15D /* FlicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C083A2EEC02000017C15D /* FlicListViewModel.swift */; };
 		753475C42B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */; };
 		753475C62B76292B00D1ED5B /* FlicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753475C52B76292B00D1ED5B /* FlicListView.swift */; };
@@ -18,32 +17,7 @@
 		7AD01D022EEC02000017C15D /* FlicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD01D012EEC02000017C15D /* FlicDetailView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A11C00032FD0000100F1C002 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A11C00012FD0000100F1C002 /* fliclib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3A495A8B225DEE7800570CBF;
-			remoteInfo = flic2lib;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A11C00072FD0000100F1C002 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A11C00062FD0000100F1C002 /* flic2lib.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		A11C00012FD0000100F1C002 /* fliclib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "fliclibFramework-iOS/fliclib.xcodeproj"; sourceTree = "<group>"; };
 		751C083A2EEC02000017C15D /* FlicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicListViewModel.swift; sourceTree = "<group>"; };
 		753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flic-duo-features-sample-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		753475C32B76292B00D1ED5B /* flic2lib_ios_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flic2lib_ios_sampleApp.swift; sourceTree = "<group>"; };
@@ -60,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A11C00052FD0000100F1C002 /* flic2lib.framework in Frameworks */,
+				A11C00102FD0000100F1C002 /* flic2lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				753475C22B76292B00D1ED5B /* flic-duo-features-sample-ios */,
-				A11C00012FD0000100F1C002 /* fliclib.xcodeproj */,
 				7519EE5C2FDB137400FC351C /* Frameworks */,
 				753475C12B76292B00D1ED5B /* Products */,
 			);
@@ -115,14 +88,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A11C00022FD0000100F1C002 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A11C00042FD0000100F1C002 /* flic2lib.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,7 +98,6 @@
 				753475BC2B76292B00D1ED5B /* Sources */,
 				753475BD2B76292B00D1ED5B /* Frameworks */,
 				753475BE2B76292B00D1ED5B /* Resources */,
-				A11C00072FD0000100F1C002 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +105,7 @@
 			);
 			name = "flic-duo-features-sample-ios";
 			packageProductDependencies = (
+				A11C000F2FD0000100F1C002 /* flic2lib */,
 			);
 			productName = "flic2lib-ios-sample";
 			productReference = 753475C02B76292B00D1ED5B /* flic-duo-features-sample-ios.app */;
@@ -171,31 +136,16 @@
 			);
 			mainGroup = 753475B72B76292B00D1ED5B;
 			packageReferences = (
+				A11C000E2FD0000100F1C002 /* XCRemoteSwiftPackageReference "flic2lib-ios" */,
 			);
 			productRefGroup = 753475C12B76292B00D1ED5B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A11C00022FD0000100F1C002 /* Products */;
-					ProjectRef = A11C00012FD0000100F1C002 /* fliclib.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				753475BF2B76292B00D1ED5B /* flic-duo-features-sample-ios */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A11C00042FD0000100F1C002 /* flic2lib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = flic2lib.framework;
-			remoteRef = A11C00032FD0000100F1C002 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		753475BE2B76292B00D1ED5B /* Resources */ = {
@@ -223,6 +173,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A11C000E2FD0000100F1C002 /* XCRemoteSwiftPackageReference "flic2lib-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/50ButtonsEach/flic2lib-ios.git";
+			requirement = {
+				branch = "feature/fall-detection";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A11C000F2FD0000100F1C002 /* flic2lib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A11C000E2FD0000100F1C002 /* XCRemoteSwiftPackageReference "flic2lib-ios" */;
+			productName = flic2lib;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		753475CC2B76292C00D1ED5B /* Debug */ = {

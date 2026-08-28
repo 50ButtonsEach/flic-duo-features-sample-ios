@@ -1,8 +1,11 @@
 ![Flic Logo Black](https://user-images.githubusercontent.com/2717016/70526105-1bbaa200-1b49-11ea-9aa0-49e7959300c3.png)
 
-# flic2lib-ios-sample
+# flic-duo-features-sample-ios
 
-Sample implementation of flic2lib on iOS in SwiftUI.
+This project is a sample implementation of Flic Duo specific features:
+ - Accelerometer Streaming
+ - Fall Detection
+ - Buzzer
 
 For more information please go to [https://github.com/50ButtonsEach/flic2lib-ios](https://github.com/50ButtonsEach/flic2lib-ios).
 
